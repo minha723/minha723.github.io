@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Minha Robyn Kim - Index</title>
+  <title>Contact - Minha Robyn</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -47,12 +47,12 @@
 
       <nav id="navbar" class="navbar order-last order-lg-0">
         <ul>
-          <li><a class="active" href="index.html">Home</a></li>
+          <li><a href="index.html">Home</a></li>
           <li><a href="about.html">About</a></li>
           <li><a href="resume.html">Resume</a></li>
           <li><a href="services.html">Services</a></li>
           <li><a href="portfolio.html">Portfolio</a></li>
-          <li><a href="contact.html">Contact</a></li>
+          <li><a class="active" href="contact.html">Contact</a></li>
           <li><a href="signup.html">Sign up</a></li>
           <li><a href="login.html">Log in</a></li>
         </ul>
@@ -70,14 +70,80 @@
 
   </header><!-- End Header -->
 
-  <!-- ======= Hero Section ======= -->
-  <section id="hero" class="d-flex align-items-center">
-    <div class="container d-flex flex-column align-items-center" data-aos="zoom-in" data-aos-delay="100">
-      <h1>Minha Robyn Kim</h1>
-      <h2>I'm a professional ... from Korea</h2>
-      <a href="about.html" class="btn-about">About Me</a>
-    </div>
-  </section><!-- End Hero -->
+  <main id="main">
+
+    <!-- ======= Contact Section ======= -->
+    <section id="contact" class="contact">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>Contact</h2>
+          <p>인천일보 아카데미에서 공부하는 로빈에게 문의</p>
+        </div>
+
+        <div>
+          <iframe style="border:0; width: 100%; height: 270px;" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3167.926340069331!2d126.67292441564564!3d37.438844839187716!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357b799896635d33%3A0x931a5cb92c2d607c!2zKOyjvCnsnbjsspzsnbzrs7Qg7JWE7Lm0642w66-4!5e0!3m2!1sko!2skr!4v1652330358573!5m2!1sko!2skr" frameborder="0" allowfullscreen></iframe>
+        </div>
+
+        <div class="row mt-5">
+
+          <div class="col-lg-4">
+            <div class="info">
+              <div class="address">
+                <i class="bi bi-geo-alt"></i>
+                <h4>위치:</h4>
+                <p>인천광역시 남구 학익동663-1번지 , 11111</p>
+              </div>
+
+              <div class="email">
+                <i class="bi bi-envelope"></i>
+                <h4>이메일주소:</h4>
+                <p>info@example.com</p>
+              </div>
+
+              <div class="phone">
+                <i class="bi bi-phone"></i>
+                <h4>전화번호:</h4>
+                <p>+82 010 1111 1111</p>
+              </div>
+
+            </div>
+
+          </div>
+
+          <div class="col-lg-8 mt-5 mt-lg-0">
+
+            <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+              <div class="row">
+                <div class="col-md-6 form-group">
+                  <input type="text" name="name" class="form-control" id="name" placeholder="이름" required>
+                </div>
+                <div class="col-md-6 form-group mt-3 mt-md-0">
+                  <input type="email" class="form-control" name="email" id="email" placeholder="이메일 주소" required>
+                </div>
+              </div>
+              <div class="form-group mt-3">
+                <input type="text" class="form-control" name="subject" id="subject" placeholder="제목" required>
+              </div>
+              <div class="form-group mt-3">
+                <textarea class="form-control" name="message" rows="5" placeholder="문의내용" required></textarea>
+              </div>
+              <div class="my-3">
+                <div class="loading">로딩</div>
+                <div class="error-message">에러발생</div>
+                <div class="sent-message">입력하신 메세지가 전달되었습니다. 이메일로 답변 드리겠습니다. 감사합니다.</div>
+              </div>
+              <div class="text-center"><button type="submit">문의사항 보내기</button></div>
+            </form>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Contact Section -->
+
+  </main><!-- End #main -->
 
   <!-- ======= Footer ======= -->
   <footer id="footer">
