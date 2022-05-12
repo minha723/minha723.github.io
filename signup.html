@@ -254,13 +254,13 @@
     function idCheck() {
         let id = document.getElementById("userId").value;
         let idCheckResult = document.getElementById("id-check-result");
-        const exp = /^[a-z\d-_]{5,20}$/
+        const exp = /^[A-Za-z\d-_]{5,20}$/
 
         if (id.match(exp)) {
             idCheckResult.innerHTML = "";
             document.getElementById("iuser").style.color = "#34b7a7";
         } else {
-            idCheckResult.innerHTML = "5~20자의 영문 소문자, 숫자와 특수기호(_),(-)만 사용 가능합니다.";
+            idCheckResult.innerHTML = "5~20자의 영문, 숫자, 및 특수기호(_),(-)만 사용 가능합니다.";
             idCheckResult.style.color = "red";
             document.getElementById("iuser").style.color = "#999";
 
@@ -268,21 +268,21 @@
     }
 
     function pwCheck() {
-        console.log("함수호출");
         let pw1 = document.getElementById("pw1").value;
         let pwCheckResult = document.getElementById("pw-check-result");
-        const pwExp = /^(?=.*[!$#-_])(?=.*[a-z])(?=.*[\d])[A-Za-z\d!$#-_]{8,16}$/
+        const pwExp = /^(?=.*[a-z])(?=.*[\d])(?=.*[-_!#$])[A-Za-z\d-_!#$]{5,16}$/
 
         if (pw1.match(pwExp)) {
+            console.log("함수");
             pwCheckResult.innerHTML = "";
             pwCheckResult.style.color = "green";
             document.getElementById("ipw1").style.color = "#34b7a7";
 
         } else {
-            pwCheckResult.innerHTML = "8~16자의 영문 소문자, 숫자, 특수기호(!,$,#,-,_)를 사용하세요.";
+            console.log("왜이러지?")
+            pwCheckResult.innerHTML = "5~16자의 영문 소문자, 숫자, 특수기호(!,$,#,-,_)를 사용하세요.";
             pwCheckResult.style.color = "red";
             document.getElementById("ipw1").style.color = "#999";
-
         }
     }
 
@@ -322,7 +322,7 @@
             document.getElementById("iBday").style.color = "#34b7a7";
 
         }else{
-            bdayResult.innerHTML="0000-00-00 형태로 입력해주세요.";
+            bdayResult.innerHTML="YYYY-MM-DD 형태로 입력해주세요.";
             bdayResult.style.color ="red";
             document.getElementById("iBday").style.color = "#999";
 
