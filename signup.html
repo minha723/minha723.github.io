@@ -182,7 +182,7 @@
                     <input type="text" id="userId" onblur="idCheck()" class="form-control" name="userId"
                         placeholder="아이디" required="required">
                 </div>
-                <p id="id-check-result" style="font-size: small;"></p>
+                <p id="id-check-result" style="font-size: small; color: red;"></p>
             </div>
 
             <div class="form-group">
@@ -191,7 +191,7 @@
                     <input type="password" class="form-control" id="pw1" onblur="pwCheck()" name="pw1"
                         placeholder="비밀번호" required="required">
                 </div>
-                <p id="pw-check-result" style="font-size: small;"></p>
+                <p id="pw-check-result" style="font-size: small; color: red;"></p>
             </div>
 
             <div class="form-group">
@@ -203,7 +203,7 @@
                     <input type="password" class="form-control" id="pw2" onblur="confirmPw()" name="pw2"
                         placeholder="비밀번호 재확인" required="required">
                 </div>
-                <p id="confirm-pw-result" style="font-size: small;"></p>
+                <p id="confirm-pw-result" style="font-size: small; color: red;"></p>
             </div>
 
             <div class="form-group">
@@ -212,6 +212,7 @@
                     <input type="text" id="username" class="form-control" name="username"
                         placeholder="이름" required="required" onblur="usernameCheck()">
                 </div>
+                <p id="name-check-result" style="font-size: small; color: red;"></p>
             </div>
 
             <div class="form-group">
@@ -220,7 +221,7 @@
                     <input type="text" id="bday" onblur="bdayCheck()" class="form-control" name="bday"
                         placeholder="생년월일" required="required">
                 </div>
-                <p id="bday-check-result" style="font-size: small;"></p>
+                <p id="bday-check-result" style="font-size: small; color: red;"></p>
 
             </div>
 
@@ -230,7 +231,7 @@
                     <input type="email" class="form-control" id="email" name="email" placeholder="이메일주소"
                         required="required" onblur="emailCheck()">
                 </div>
-                <p id="email-check-result" style="font-size: small;"></p>
+                <p id="email-check-result" style="font-size: small; color: red;"></p>
             </div>
 
             <div class="form-group">
@@ -239,11 +240,11 @@
                     <input type="text" class="form-control" id="mobile" onblur="mobileCheck()" name="mobile" placeholder="전화번호(000-000-0000)"
                         required="required">
                 </div>
-                <p id="mobile-check-result" style="font-size: small;"></p>
+                <p id="mobile-check-result" style="font-size: small; color: red;"></p>
             </div>
 
             <div class="form-group">
-                <button class="btn btn-primary btn-block btn-lg"><a href="./index.html" style="color: white;"></a>Sign up</button>
+                <button type="submit" class="btn btn-primary btn-block btn-lg" onclick="signupCheck()">Sign up</button>
             </div>
             <!-- <p class="small text-center">By clicking the Sign Up button, you agree to our <br><a href="#">Terms &amp; Conditions</a>, and <a href="#">Privacy Policy</a>.</p> -->
         </form>
@@ -256,12 +257,14 @@
         let idCheckResult = document.getElementById("id-check-result");
         const exp = /^[A-Za-z\d-_]{5,20}$/
 
-        if (id.match(exp)) {
+        if(id.length == 0){
+            idCheckResult.innerHTML = "필수 정보입니다.";
+            document.getElementById("iuser").style.color = "#999";
+        } else if (id.match(exp)) {
             idCheckResult.innerHTML = "";
             document.getElementById("iuser").style.color = "#34b7a7";
         } else {
             idCheckResult.innerHTML = "5~20자의 영문, 숫자, 및 특수기호(_),(-)만 사용 가능합니다.";
-            idCheckResult.style.color = "red";
             document.getElementById("iuser").style.color = "#999";
 
         }
@@ -272,16 +275,15 @@
         let pwCheckResult = document.getElementById("pw-check-result");
         const pwExp = /^(?=.*[a-z])(?=.*[\d])(?=.*[-_!#$])[A-Za-z\d-_!#$]{5,16}$/
 
-        if (pw1.match(pwExp)) {
-            console.log("함수");
+        if(pw1.length == 0){
+            pwCheckResult.innerHTML="필수 정보입니다.";
+            document.getElementById("iuser").style.color = "#999";
+        } else if (pw1.match(pwExp)) {
             pwCheckResult.innerHTML = "";
             pwCheckResult.style.color = "green";
             document.getElementById("ipw1").style.color = "#34b7a7";
-
         } else {
-            console.log("왜이러지?")
             pwCheckResult.innerHTML = "5~16자의 영문 소문자, 숫자, 특수기호(!,$,#,-,_)를 사용하세요.";
-            pwCheckResult.style.color = "red";
             document.getElementById("ipw1").style.color = "#999";
         }
     }
@@ -291,12 +293,14 @@
         let pw2 = document.getElementById("pw2").value;
         let pw2CheckResult = document.getElementById("confirm-pw-result");
 
-        if (pw1 == pw2) {
+        if(pw2.length == 0){
+          pw2CheckResult.innerHTML ="필수 정보입니다.";
+          document.getElementById("ipw2").style.color = "#999";
+        } else if (pw1 == pw2) {
             pw2CheckResult.innerHTML = "";
             document.getElementById("ipw2").style.color = "#34b7a7";
         } else {
             pw2CheckResult.innerHTML = "비밀번호가 일치하지 않습니다.";
-            pw2CheckResult.style.color = "red";
             document.getElementById("ipw2").style.color = "#999";
 
         }
@@ -304,8 +308,10 @@
 
     function usernameCheck() {
         let username = document.getElementById("username").value;
+        let nameCheckResult = document.getElementById("confirm-pw-result");
 
         if (username.length == 0) {
+            nameCheckResult.innerHTML ="필수 정보입니다."
             document.getElementById("iUsername").style.color = "#999";
         } else {
             document.getElementById("iUsername").style.color = "#34b7a7";
@@ -317,15 +323,16 @@
         let bday = document.getElementById("bday").value;
         let bdayResult = document.getElementById("bday-check-result");
         const bdayExp = /^\d{4}-\d{2}-\d{2}$/ 
-        if(bday.match(bdayExp)){
+        
+        if(bday.length ==0){
+            document.getElementById("iBday").style.color = "#999";
+            bdayResult.innerHTML = "필수 정보입니다.";
+        }else if(bday.match(bdayExp)){
             bdayResult.innerHTML ="";
             document.getElementById("iBday").style.color = "#34b7a7";
-
         }else{
             bdayResult.innerHTML="YYYY-MM-DD 형태로 입력해주세요.";
-            bdayResult.style.color ="red";
             document.getElementById("iBday").style.color = "#999";
-
         }
     }
 
@@ -334,14 +341,15 @@
         let emailResult = document.getElementById("email-check-result");
         const emailExp = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
 
-        if(email.match(emailExp)){
+        if(email.length ==0){
+            emailResult.innerHTML = "필수 정보입니다.";
+            document.getElementById("iEmail").style.color = "#999";
+        }else if(email.match(emailExp)){
             emailResult.innerHTML ="";
             document.getElementById("iEmail").style.color = "#34b7a7";
         }else{
             emailResult.innerHTML="이메일 형태를 확인해주세요.";
-            emailResult.style.color ="red";
             document.getElementById("iEmail").style.color = "#999";
-
         }
     }
 
@@ -350,18 +358,29 @@
         let mobileResult = document.getElementById("mobile-check-result");
         const mobileExp = /^\d{3}-\d{4}-\d{4}$/ 
         
-        if(mobile.match(mobileExp)){
+        if(mobile.length == 0){
+            mobileResult.innerHTML = "필수 정보입니다.";
+            document.getElementById("iMobile").style.color = "#999";
+        }
+        else if(mobile.match(mobileExp)){
             mobileResult.innerHTML ="";
             document.getElementById("iMobile").style.color = "#34b7a7";
 
         }else{
             mobileResult.innerHTML="전화번호 형태를 확인해주세요.";
-            mobileResult.style.color ="red";
             document.getElementById("iMobile").style.color = "#999";
-
         }
     }
 
+    function signupCheck(){
+        idCheck();
+        pwCheck();
+        confirmPw();
+        usernameCheck();
+        bdayCheck();
+        emailCheck();
+        mobileCheck();
+    }
 
 </script>
 
